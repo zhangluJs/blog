@@ -278,7 +278,6 @@ render() {
         </React.Suspense>
     </div>
 }
-
 ```
 
 * 性能优化
@@ -420,6 +419,64 @@ function App() {
 
 export default App;
 ```
+
+## Redux使用
+
+## react-router 使用
+
+* 路由模式（hash、 h5 history），同vue-router
+
+* 路由配置（动态路由、懒加载），同vue-touter
+
+
+
+## React 原理
+
+**函数式编程** 
+
+- 纯函数
+
+- 不可变值
+
+**vdom和diff**
+
+**JSX本质**
+
+等同于Vue template，它不是HTML，它也不是JS
+
+React.createElement类似于sanbbdom中的h函数。返回vdom
+
+第一个参数，可以是一个组件，也可以是一个tag名称的字符串
+
+第二个参数，是一个对象包涵了其中对应的属性，如果没有属性可以传个null
+
+第三个参数，可以是一个数组，其中可以包括所有子组件。也可是若干多个React.createElement
+
+解析后其实就是调用了 React.createElement方法。类似下面这样。
+
+```js
+React.createElement('div', null, React.createElement('p', null, 'some text'), React.createElement('img', {src: 'xxx'}))
+```
+
+**合成事件**
+
+React的所有事件挂载在document上
+
+不是原生DOM（MouseEvent）事件，是SyntheticEvent合成事件对象
+
+为什么要有合成事件机制？ 更好的兼容性和跨平台。 挂载到document，减少内存消耗，避免频繁解绑。方便事件的统一管理
+
+**setState batchUpdate**
+
+**组件渲染过程**
+
+
+
+
+
+
+
+
 
 **状态提升**
 
