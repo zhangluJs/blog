@@ -8,15 +8,16 @@
     "build": "webpack --config ./webpack.prod.js --mode production"
   },
   "dependencies": {
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0",
-    "redux": "^4.0.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "element-react": "^1.4.21",
-    "element-theme-default": "^1.4.13"
+    "element-theme-default": "^1.4.13",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-hot-loader": "^4.5.3",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

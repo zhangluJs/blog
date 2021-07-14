@@ -30,10 +30,14 @@ module.exports = {
 
     // webpack内置的node服务
     devServer: {
+        // 根目录
         contentBase: './',
         inline: true,
+        // 端口
         port: 3001,
+        // 启动gzip压缩
         compress: false,
+        // 热更新
         hot: true
     },
     module: {

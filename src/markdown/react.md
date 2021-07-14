@@ -468,12 +468,46 @@ React的所有事件挂载在document上
 
 **setState batchUpdate**
 
-**组件渲染过程**
+batchUpdate批量更新。React中setState一般情况下是异步，这是因为setState会触发视图的更新，如果频繁的触发会耗费性能。所以就需要将某一批的修改存起来，然后统一的做处理。
+
+因为setState是异步的，所以有多个setState时会被合并。
+
+在像定时器setTimeout或DOM事件中时，setState又是同步的。这是因为无法命中batchupdate机制，我个人理解，因为setState是异步的。定时器、DOM事件都是宏任务，在执行时isBatchingUpdates已经成为了false，无法进入batchupdate队列中，所以就同步更新。
+
+```js
+// 它们会被合并，因为是异步操作，所以在最终处理时this.state.a的值并没有发生变化，依然是0，所以下面的三个结果都是1
+this.state.a = 0;
+this.setState({a: this.state.a + 1});
+this.setState({a: this.state.a + 1});
+this.setState({a: this.state.a + 1});
+```
+
+* setState什么情况下是异步什么情况下是同步？
+
+    看它是否能否命中batchUpdate机制。
+
+    在组件的生命周期（和它调用的函数）、注册的事件（和它调用的函数）、属于React可以管理的入口都可以命中batchUpdate机制，这时它就是异步的。
+
+    setTimeout、DOM事件不属于React可以管理的入口，无法命中batchUpdate机制。这时它就是同步的。
+
+**组件渲染和更新过程**
+
+1. JSX生成vnode(React.creatElement);
+
+2. patch(ele,vnode)和patch(oldVnode, newVnode);
 
 
+**性能优化**
 
+1. 渲染list使用key
 
+2. 自定义事件、DOM事件及时销毁
 
+3. 合理使用异步组件
+
+4. 减少函数bind this次数
+
+5. 合理使用SCU pureComponent和memo
 
 
 
