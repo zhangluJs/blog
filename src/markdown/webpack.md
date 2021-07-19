@@ -77,6 +77,8 @@ module: {
 }
 ```
 
+* postcss-loader 这个loader是给css属性加浏览器内核前缀的。为了解决兼容问题
+
 #### plugins：
 
 对于这个选项官网给出的解释是```用于以各种方式自定义 webpack 构建过程```。
@@ -91,7 +93,7 @@ plugins: [
 }
 ```
 
-**马后炮一发。其实整体配置完了后发现，配置项并没有多复杂，按照自己的需要选择不同的loader、plugin来满足项目的需要。当然了，vue-cli那种复杂并且区分开发环境生产环境的架子一时半会还是搞不定的，还需要慢慢学习、经历与沉淀。**
+**马后炮一发。其实整体配置完了后发现，配置项并没有多复杂，按照自己的需要选择不同的loader、plugin来满足项目的需要。当然了，vue-cli那种复杂并且区分开发环境生产环境的架子一时半会还是搞不定的，还需要慢慢学习、经历与沉淀。(2021年7月19日，收回这句话，太难了)**
 
 
 ## 高级配置
@@ -166,7 +168,7 @@ optimization: {
 
 ### 抽离公共代码
 
-多入口的情况下，不同文件引入了公共的模块。这时候就需要把公共的文件单独抽离出来，可以避免重复使用。
+多入口的情况下，不同文件引入了相同的公共模块，如果不将公共的部分抽离出来将会造成代码重复。这时候就需要把公共的文件单独抽离出来，可以避免重复使用。
 
 ```js
 optimization: {
@@ -230,3 +232,200 @@ setTimeout(() => {
 * entry - 多个模块合并成的，如entry import splitChunk
 
 * bundle - 最终输出的文件
+
+### webpack性能优化
+
+1. 构建速度
+
+    * 优化babel-loader
+
+```js
+{
+    test: /\.js$/,
+    // 开启缓存 cacheDirectory 会将没有修改的代码缓存，在下次修改时，如果代码没有被修改就不会被编译
+    use: ['babel-loader?cacheDirectory'],
+    // 明确编译的范围
+    include: path.resolve(__dirname, 'src'),
+    // 明确不需要编译的范围 include / exlude 两者选一个即可
+    exclude: path.resolve(__dirname, 'node_modules')
+}
+
+```
+
+2. IgnorePlugin
+
+    避免引入无用模块
+
+    用moment这个日期库举例，它里面有一部分是用来支持其他语言的模块，当我们开发的时候其实是不需要这部分的。我们就可以忽略掉这部分的内容。这样打包就不会把这部分内容打进去。
+
+```js
+plugin: [
+    // 忽略moment下的locale目录
+    new webpack.IngorePlugin(/\.\/locale/, /moment/)
+]
+ 
+// index.js 如果还需要用到某些locale下的内容，可以手动引入
+// 这样的目的是只引入zh-cn这个语言包，其他的语言包依然被忽略
+import 'moment-locale/zh-cn';
+```
+
+3. noParse
+
+    避免重复打包，比如react.min.js这是已经打包后的文件，我们在编译的可以不用对其打包
+
+```js
+module: {
+    noParse: ['/react\.min\.js$/']
+}
+```
+
+* IgnorePlugin 与 noParse的区别
+
+> IgnorePlugin直接忽略掉文件，代码中没有。noParse引入，但不打包。
+
+4. happyPack
+
+    开启多进程打包
+
+```js
+const HappyPack = require('happypack');
+module: {
+    rules: [{
+        test: '/\.js$/',
+        // 这里的id对应下面plugin中设置的id 
+        use: ['happypack/loader?id=babel'],
+        include: Path.resolve(__dirname, 'src')
+
+    }]
+},
+plugin: [
+    // happypack 开启多进程打包
+    new HappyPack({
+        // 这里的id对应上面的id=babel
+        id: 'babel',
+        // 如何处理.js文件，用法和loader配置中一样
+        loaders: ['babel-loader?cacheDirectory']
+    })
+]
+```
+
+5. parallelUglifyPlugin
+
+    开启多进程压缩js
+
+```js
+const ParallelUglifyPlugin = require('webpack-paralle-uglify-plugin');
+plugin: [
+    new ParallelUglifyPlugin({
+        uglifyJS: {
+            output: {
+                // 最紧凑的输出
+                beautify: false,
+                // 删除所有注释
+                comments: false
+            },
+            compress: {
+                // 删除所有的 console 语句，可以兼容ie浏览器
+                drop_console: true,
+                // 内嵌定义了但是只用到一次的变量
+                collapse_vars: true,
+                // 提取出出现多次但是没有定义成变量去引用的静态值
+                reduce_vars: true
+            }
+        }
+    })
+]
+```
+
+6. 自动刷新
+
+    修改完代码后浏览器自动刷新一下
+
+```js
+module.exports = {
+    watch: true, // 默认是false
+    watchOptions: {}
+}
+```
+
+7. 热更新
+
+    页面不刷新，直接应用最新的代码
+
+```js
+module.exports = {
+    entry: {
+        index: [
+            // 固定的写法 域名端口要与你本地的服务一致 也就是devserver中定义的
+            'webpack-dev-server/client?http://localhost:3001/',
+            'webpack/hot/dev-server',
+            path.join(__dirname, 'src/main.js')
+        ]
+    },
+    devServer: {
+        // 开启热更新
+        hot: true,
+        port: 3001
+    },
+    plugin: [
+        // 调用HotModuleReplacementPlugin
+        new webpack.HotModuleReplacementPlugin()
+    ]
+}
+```
+
+8. DllPlugin 动态链接库插件
+
+    前端框架如Vue、React体积大，构建慢。版本较稳定，不常升级版本。同一个版本只构建一次即可，不用每次都重新构建。
+
+    DllPlugin - 打包出dll文件
+
+    DllReferencePlugin - 使用dll文件
+
+    题外话：个人理解，大型项目中代码量上来后，每次编译都是比较耗时的，而且像vue、react这种比较大的框加。而如果我提前将vue、react这类框架编译一份放在本地，每次都使用这份编译后的dll文件，除非版本升级否则就不重新编译，这样就可以增加开发时编译的速度。`webpack水好深，之前没弄过这玩意。`
+
+```js
+// webpack.dll.js
+module.exports = {
+    mode: 'development',
+    // 入口文件
+    entry: {
+        // 期望生成dll内容的库
+        // 把React相关的模块放到一个单独的动态链接库
+        react: ['react', 'react-dom']
+    },
+    output: {
+        // 输出的动态链接库的文件名称，[name] 代表当前动态链接库的名称
+        // 也就是 entry 中配置的 react 和 polyfill
+        filename: '[name].dll.js',
+        // 输出的文件全部放在dist文件下
+        path: path.join(__dirname, 'dist'),
+        // 存放动态链接库的全局变量名称，例如对应 react 来说就是 _dll_react
+        // 之所以在前面加上 _dll_ 是为了防止全局变量冲突
+        library: '_dll_[name]'
+    },
+    plugin: [
+        // 接入dllplugin
+        new webpack.Dllplugin({
+            // 动态链接库的全局变量名称，需要和 output.library 中保持一致
+            // 该字段的值也就是输出的 manifest.json 文件中 name 字段的值
+            // 例如 react.manifest.json 中就有 "name": "_dll_react"
+            name: '_dll_[name]',
+            // 描述动态链接库的 manifest.json 文件输出时的文件名称
+            path: path.join(__dirname, '[name].manifest.json'),
+        })
+    ]
+}
+
+// webpack.config.js
+plugin: [
+    // 告诉webpack 使用了哪些动态链接库
+    new webpack.DllReferencePlugin({
+        // 描述react动态链接库的文件内容 react.manifest.json这个文件就是上面生成的，相当于一个索引，告诉你怎么去使用dll中的内容
+        manifest: require(path.join(__dirname, 'react.manifest.json'));
+    })
+]
+
+// index.html
+<script src="./react.dll.js"></script>
+```
