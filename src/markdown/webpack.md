@@ -237,7 +237,7 @@ setTimeout(() => {
 
 1. 构建速度
 
-    * 优化babel-loader
+    * 优化babel-loader 可用于生产环境
 
 ```js
 {
@@ -252,7 +252,7 @@ setTimeout(() => {
 
 ```
 
-2. IgnorePlugin
+2. IgnorePlugin 可用于生产环境
 
     避免引入无用模块
 
@@ -269,7 +269,7 @@ plugin: [
 import 'moment-locale/zh-cn';
 ```
 
-3. noParse
+3. noParse 可用于生产环境
 
     避免重复打包，比如react.min.js这是已经打包后的文件，我们在编译的可以不用对其打包
 
@@ -283,7 +283,7 @@ module: {
 
 > IgnorePlugin直接忽略掉文件，代码中没有。noParse引入，但不打包。
 
-4. happyPack
+4. happyPack 可用于生产环境
 
     开启多进程打包
 
@@ -309,7 +309,7 @@ plugin: [
 ]
 ```
 
-5. parallelUglifyPlugin
+5. parallelUglifyPlugin 必须用于生产环境
 
     开启多进程压缩js
 
@@ -337,7 +337,7 @@ plugin: [
 ]
 ```
 
-6. 自动刷新
+6. 自动刷新 不可用于生产环境
 
     修改完代码后浏览器自动刷新一下
 
@@ -348,7 +348,7 @@ module.exports = {
 }
 ```
 
-7. 热更新
+7. 热更新 不可用于生产环境
 
     页面不刷新，直接应用最新的代码
 
@@ -374,7 +374,7 @@ module.exports = {
 }
 ```
 
-8. DllPlugin 动态链接库插件
+8. DllPlugin 动态链接库插件 没必要用于生产环境
 
     前端框架如Vue、React体积大，构建慢。版本较稳定，不常升级版本。同一个版本只构建一次即可，不用每次都重新构建。
 
@@ -429,3 +429,103 @@ plugin: [
 // index.html
 <script src="./react.dll.js"></script>
 ```
+
+#### webpack性能优化 - 产出代码
+
+    可以让打包后的代码体积更小。合理分包，不重复加载。速度更快，内存使用更少。
+
+1. 小图片base64编码
+
+```js
+module.exports = {
+    module: {
+        result: [{
+            test: /\.(png|jpg|jpeg|gif)$/,
+            use: {
+                loader: 'url-loader',
+                options: {
+                    // 小于 5kb 的图片用base64 格式产出
+                    // 否则，依然延用 file-loader 的行驶，产出url格式
+                    limit: 5 * 1024,
+                    output: '/img1/'
+                }
+            }
+        }]
+    }
+}
+```
+
+2. bundle 后面加hash
+
+```js
+module.exports = {
+    entry: path.join(__dirname, 'index.js'),
+    output: {
+        // 添加内容hash，如果内容有更改则hash会改变，重新拉取新的资源。否则hash不改变，不会重新拉取
+        filename: 'bundle.[contentHash:8].js',
+        path: path.join(__dirname, 'dist')
+    }
+}
+```
+
+3. 懒加载
+
+4. 提取公共代码
+
+```js
+module.exports = {
+    optimization: {
+        splitChunks: {
+            chunk: 'all'
+            cacheGroup: {
+                vendor: {
+                    name: 'vendor',
+                    test: /node_modules/,
+                    priority: 1,
+                    minSize: 0,
+                    minChunks: 1
+                },
+                common: {
+                    name: 'common',
+                    minSize: 1,
+                    minCunks: 2,
+                    priority: 0
+                }
+            }
+        }
+    }
+}
+```
+
+5. IgnorePlugin 忽略掉没用的某些多余的包
+
+6. 使用CDN加速 publicPath
+
+7. 使用production
+
+    使用了production之后会自动压缩代码
+
+    会启动Tree-shaking(只用使用ES6 module才能生效。commonjs不行)
+
+8. Scope Hosting
+
+    代码体积更小
+
+    创建函数作用域更少
+
+    代码可读性更好
+
+
+## ES Module 和 Commonjs 的区别
+
+这两者都是前端的模块化的解决方案，目前比较常用的是es6的module。nodejs中比较常用的是Commonjs。
+
+- 建议使用ES6module。ES6Module静态引入，编译时引入。
+
+- Commonjs动态引入，执行时引入。
+
+## babel 
+
+    解析es6/7到es5，保证浏览器的兼容性。
+
+* babel-polyfill
