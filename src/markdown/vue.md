@@ -115,7 +115,9 @@ export default {
 
 * 生命周期
 
-    create与mounted有什么不同？ create是当前实例刚刚声明，组件还没渲染，正在初始化实例。mounted是组件渲染完成了，
+    create与mounted有什么不同？ create是当前实例刚刚声明，组件还没渲染，正在初始化实例。mounted是组件渲染完成了。
+
+    从实例的创建到数据的初始化，再到编译模版，再到DOM的渲染，数组的更新、页面的渲染，实例的销毁
 
 挂载阶段
 

@@ -75,6 +75,11 @@ export default class ArticleList extends React.Component {
                     在工作时始自己始终没有完整负责过一个项目的从无到有，所以利用空余时间好好啃了啃目前相对较火的webpack。`,
                 date: '工具 / 学习'
             }, {
+                name: 'React-hooks',
+                path: '/react-hooks',
+                description: 'React-hooks学习笔记',
+                date: '个人笔记 / 学习'
+            }, {
                 name: 'React',
                 path: '/react',
                 description: 'react学习笔记',

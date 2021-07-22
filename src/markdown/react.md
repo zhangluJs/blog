@@ -719,6 +719,17 @@ const LikeButtons: React.FC = () => {
 
 - useRef：这玩意看了大半天也没理解到底是干嘛的，先放着吧
 
+这个useRef其实就是和ref差不多的功能，也是来绑定DOM节点的。也可以用来绑定一些数据
+
+```js
+const btnRef = useRef(null);
+const numRef = useRef(0);
+numRef.current // 0 也可以用来绑定值
+
+<button ref={btnRef}></button>
+console.log(btnRef.current) // 当前这个绑定的节点
+```
+
 - useContext：子组件如何共享同一份数据，其实这个hook和React的Context几乎一样。先将数据从顶层灌进去，然后再从各个组件中拿出来使用。看代码吧⬇️一个简单的exempla
 
 ```js
@@ -778,5 +789,100 @@ function children() {
             </div>
         </>
     )
+}
+```
+
+- useReducer
+
+    我个人理解这个东西就类似于Vue3中ref与reactive的区别，一个声明值类型的响应式，一个声明引用类型的响应式。useReducer用于处理state的复杂变化。需要注意的是，useReducer是单组件的状态管理，组件之间依然是需要props来通信，而redux是全局的状态。（这个东西还得消化消化...）
+
+```js
+// 初始化值
+const initialState = {count: 0};
+
+// 声明值修改的规则，其实这里很像redux
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'increment':
+            return {count: state.count + 1};
+        case 'decrement':
+            return {count: state.count - 1};
+        default:
+            return state
+    }
+}
+
+function App() {
+    // useReducer接受两个参数，一个是reducer规则，一个是初始值。
+    // 解构出来和useState类似，第一个参数是值，第二个参数是值的修改方式。
+    const [state, dispatch] = useReducer(reducer, initialState);
+    return <div>
+        count: {state.count}
+        <button onClick={() => dispatch({type: 'increment'})}>increment</button>
+        <button onClick={() => dispatch({type: 'decrement'})}>decrement</button>
+    </div>
+}
+
+export default App;
+```
+
+- useMemo
+
+在react-hooks中和class组件一样，只要父组件有更新，那么它引用的所有子组件无论状态是否有修改，都会被重新渲染。我们就可以使用memo来过滤掉没必要的更新。
+
+这里其实shouldComponentUpdate优化策略一样，都是进行浅比较来决定是否更新。
+
+首先需要使用memo包裹子组件，其次使用useMemo来对值进行缓存，同时需要传入依赖，来决定子组件触发更新的时机。
+
+useMemo缓存数据
+
+```js
+// 子组件 相当于pureComponent
+const child = memo(({userInfo}) => {
+    return <div>
+        This is Children Components
+    </div>
+})
+
+function App() {
+    const [count, setCount] = useState(0);
+    const [name, setName] = useState('lulu');
+    const userInfo = useMemo(() => {
+        return {name, age: 20}
+    }, [name]);
+    return <div>
+        <child userInfo={userInfo}></child>
+    </div>
+}
+```
+
+- useCallback
+
+子组件useMemo之后，确实不会做多余的更新了，但是当我们给子组件传入自定义事件之后，又不行了。那么我们就需要使用useCallback来重新定义一下传入子组件的自定义事件。
+
+useCallback 缓存事件
+
+```js
+const child = memo(({userInfo, onChange}) => {
+    return <div>
+        <p>This is Children Components</p>
+        <input type="text" onChange={onChange}>
+    </div>
+});
+
+function App() {
+    const [name, setName] = useState('lulu');
+    // 当name发生变化的时候才更新子组件
+    const userInfo = useMemo(() => {
+        return {name, age: 20}
+    }, [name]);
+
+    const onChange = useCallback((e) => {
+        console.log(e.target.value);
+    }, [])
+
+    return <div>
+        <child userInfo={userInfo} onChange={onChange}></child>
+    </div>
 }
 ```
