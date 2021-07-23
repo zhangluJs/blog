@@ -220,7 +220,7 @@ console.log(c.get('a'));
 // 实现一个call
 Function.prototype.myCall = function (obj) {
     // 判断是否为一个对象
-    obj ？ Object(obj) : window;
+    obj = obj ？ Object(obj) : window;
     let arr = [];
     // 拿到除了第一项的所有参数。注意i 从 1开始。因为第0项是对象。
     // 也可以使用es6的结构 arr = [...argument].slice(1);
@@ -235,7 +235,7 @@ Function.prototype.myCall = function (obj) {
 
 // 实现一个apply
 Function.prototype.myApply = function (obj, arr) {
-    obj ? Object(obj) : window;
+    obj = obj ? Object(obj) : window;
     obj.fn = this;
     let result;
     if (arr) {
