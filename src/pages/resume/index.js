@@ -13,7 +13,7 @@ export default class Resume extends React.Component {
                     <section className="resume-container-head-title">
                         <h1>张璐</h1>
                         <div className="job">
-                            <h2>web前端开发<small> / 北京</small></h2>
+                            <h2>web前端开发<small> / 在职</small></h2>
                         </div>
                     </section>
                     <ul className="resume-container-head-info">
@@ -24,25 +24,25 @@ export default class Resume extends React.Component {
                     <ul className="resume-container-head-contact">
                         <li>
                             <a href="https://zhanglujs.github.io/blog" target="_blank">
-                                https://zhanglujs.github.io/blog
+                                <span className="url">https://zhanglujs.github.io/blog</span>
                                 <span className="iconfont icon-Homehomepagemenu"></span>
                             </a>
                         </li>
                         <li>
                             <a href="https://github.com/zhangluJs" target="_blank">
-                                https://github.com/zhangluJs
+                                <span className="url">https://github.com/zhangluJs</span>
                                 <span className="iconfont icon-github-copy"></span>
                             </a>
                         </li>
                         <li>
                             <a href="mailto:zhangluecma@163.com" target="_blank">
-                                zhangluecma@163.com
+                                <span className="url">zhangluecma@163.com</span>
                                 <span className="iconfont icon-emailFilled"></span>
                             </a>
                         </li>
                         <li>
                             <a href="tel:15210205880" target="_blank">
-                                15210205880
+                                <span className="url">15210205880</span>
                                 <span className="iconfont icon-phone"></span>
                             </a>
                         </li>
@@ -54,19 +54,19 @@ export default class Resume extends React.Component {
                     </h3>
                     <ul className="info">
                         <li className="info-item">
-                            <span className="iconfont icon-dian"></span>熟练使用<strong>H5</strong>、<strong>CSS3</strong>、<strong>页面布局</strong>、<strong>响应式布局</strong>等，重视<strong>页面交互</strong>与<strong>用户体验</strong>。
+                            <span className="iconfont icon-dian"></span>熟练使用<strong>H5</strong>、<strong>CSS3</strong>，进行<strong>页面布局</strong>、<strong>响应式布局</strong>等，重视<strong>页面交互</strong>与<strong>用户体验</strong>。
                         </li>
                         <li className="info-item">
                             <span className="iconfont icon-dian"></span>熟练使用<strong>ES6</strong>语法编程，追求代码<strong>高质量可维护性</strong>。熟悉<strong>异步</strong>、<strong>网络请求</strong>等基本内容。
                         </li>
                         <li className="info-item">
-                            <span className="iconfont icon-dian"></span>熟练使用<strong>Vue2.x</strong>。了解<strong>Vuex</strong>、<strong>Vue-router</strong>。了解<strong>Vue3</strong>等相关新特性
+                            <span className="iconfont icon-dian"></span>熟练使用<strong>Vue2.x</strong>。了解<strong>Vuex</strong>、<strong>Vue-router</strong>。了解<strong>Vue3</strong>等相关新特性。
                         </li>
                         <li className="info-item">
                             <span className="iconfont icon-dian"></span>熟悉<strong>React</strong>以及<strong>React Hooks</strong>等相关特性。
                         </li>
                         <li className="info-item">
-                            <span className="iconfont icon-dian"></span>了解<strong>webpack</strong>相关基础配置。有过简单的配置经验。维护过<strong>gulp</strong>相关项目
+                            <span className="iconfont icon-dian"></span>了解<strong>webpack</strong>相关基础配置。有过简单的配置经验。维护过<strong>gulp</strong>相关项目。
                         </li>
                         <li className="info-item">
                             <span className="iconfont icon-dian"></span>对<strong>Node.js</strong>、<strong>CSS预处理器</strong>、<strong>数据可视化</strong>、<strong>性能优化</strong>、<strong>前端安全</strong>等也有一定的应用。
@@ -92,7 +92,7 @@ export default class Resume extends React.Component {
                         </li>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2017.08 ～ 2019.06</strong></span>
-                            <span className="info-item-name"><strong>软通动力</strong></span>
+                            <span className="info-item-name"><strong>软通动力信息技术（集团）有限公司</strong></span>
                             <p className="info-item-desc"><span className="iconfont icon-dian"></span>负责日常需求的迭代开发、包括需求评审、提测上线支持等</p>
                             <p className="info-item-desc"><span className="iconfont icon-dian"></span>按照UI设计稿还原、实现页面交互</p>
                         </li>
@@ -100,7 +100,7 @@ export default class Resume extends React.Component {
                     <h3 className="title">
                         项目经验
                     </h3>
-                    <ul>
+                    <ul className="info">
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.08 ～ 至今</strong></span>
                             <span className="info-item-name"><strong>综合管理平台、短租管理平台</strong></span>
@@ -136,7 +136,6 @@ export default class Resume extends React.Component {
                                 <span className="iconfont icon-dian"></span>通过拆分组件、降低颗粒度减少逻辑的复杂度。将城市页面输入搜索、城市列表、右侧字母导航拆分成独立的组件。暴露方法、数据来完成组件间的通信
                             </p>
                         </li>
-                        <div style={{pageBreakAfter: 'always'}}></div>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.08 ～ 至今</strong></span>
                             <span className="info-item-name"><strong>H5活动页、APP端H5页面支持</strong></span>
@@ -147,6 +146,7 @@ export default class Resume extends React.Component {
                                 <span className="iconfont icon-dian"></span>APP端webview协议相关页面的开发支持。判断user-agent分别调用安卓、ios暴露出的方法来完成相应的交互等
                             </p>
                         </li>
+                        <div style={{pageBreakAfter: 'always'}}></div>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2018.10 ～ 2019.01</strong></span>
                             <span className="info-item-name"><strong>XPage</strong></span>
@@ -163,17 +163,33 @@ export default class Resume extends React.Component {
                                 <span className="iconfont icon-dian"></span>开发了一套可动态布局改变整站样式风格的数据分析报表模板
                             </p>
                         </li>
+                        <li className="info-item">
+                            <span className="info-item-time"><strong>2017.10 ～ 2017.11</strong></span>
+                            <span className="info-item-name"><strong>一站式登录页改版</strong></span>
+                            <p className="info-item-desc">
+                                项目背景：一站式登录页作为商业服务重要入口，展示信息缺失、内容陈旧、影响客户体验。因此期望通过对页面结构和内容的优化，提升客户体验，提高转化效率
+                            </p>
+                            <p className="info-item-desc">
+                                技术栈：<strong>Vue-cli 2.x</strong>、<strong>element-ui</strong>
+                            </p>
+                            <p className="info-item-desc">
+                                <span className="iconfont icon-dian"></span>负责整站的重构、优化，将最初版从jquery切换至vue。负责项目模块设计、开发及后续迭代、升级测试等。根据埋点反馈，PV提高 80%，UV提高 30%
+                            </p>
+                            <p className="info-item-desc">
+                                <span className="iconfont icon-dian"></span>项目中部分数据使用JSONP完成跨域请求
+                            </p>
+                        </li>
                     </ul>
                     <h3 className="title">
                         个人项目
                     </h3>
-                    <ul>
+                    <ul className="info">
                         <li className="info-item">
                             <span className="info-item-time"><strong>2018.09 ～ 至今</strong></span>
                             <span className="info-item-name">
                                 <strong>
                                     <a className="link" href="https://zhanglujs.github.io/blog" target="_blank">
-                                        个人博客
+                                        个人主页、技术博客
                                         <span className="iconfont icon-lianjie"></span>
                                     </a>
                                 </strong>
@@ -185,11 +201,10 @@ export default class Resume extends React.Component {
                                 <span className="iconfont icon-dian"></span>公共组件、首页、子页面使用<strong>React</strong>开发，路由部分使用<strong>React-router</strong>开发
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>文档部分使用<strong>Markdown</strong>来完成编辑。
+                                <span className="iconfont icon-dian"></span>内容部分使用<strong>Markdown</strong>来完成编辑、展示
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>构建工具使用<strong>webpack</strong>进行配置。其中配置了<strong>babel-loader</strong>用于转义ES6语法、<strong>file-loader</strong>解析字体文件、<strong>babel-loader!markdown-it-react-loader</strong>解析md文件等。
-                                plugins部分使用了<strong>HtmlWebpackPlugin</strong>、<strong>CleanWebpackPlugin</strong>、<strong>CopyWebpackPlugin</strong>等完成build文件的处理。
+                                <span className="iconfont icon-dian"></span>构建工具使用<strong>webpack</strong>进行配置。对ES6语法转义、解析字体、md、图片等文件，对模版、静态文件进行处理
                             </p>
                             <p className="info-item-desc">
                                 <span className="iconfont icon-dian"></span>使用<strong>gitpage</strong>通过访问静态文件的方式完成部署。
@@ -198,9 +213,9 @@ export default class Resume extends React.Component {
                     </ul>
                 </div>
                 <footer className="resume-container-footer">
-                    <a href="https://zhanglujs.github.io/blog/index.html#/resume" target="_blank">
+                    <a href="https://zhanglujs.github.io/blog/#/resume" target="_blank">
                         <span className="iconfont icon-lianjie"></span>
-                        &nbsp;&nbsp;网页版简历 https://zhanglujs.github.io/blog/index.html#/resume
+                        &nbsp;&nbsp;网页版简历 https://zhanglujs.github.io/blog/#/resume
                     </a>
                 </footer>
             </div>

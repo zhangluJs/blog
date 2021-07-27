@@ -8,14 +8,20 @@
     box-shadow: 0 0 15px #c0c0c0;
     overflow: hidden;
     color: #333;
+    transition: all .2s ease-in-out;
     font-family: 'Lucida Grande','Hiragino Sans GB','Hiragino Sans GB W3','Helvetica Neue',Helvetica,'PingFang SC','Microsoft YaHei','微软雅黑',Arial,sans-serif;
     &-head {
         padding: 30px 50px 20px;
         overflow: hidden;
+        background: #00b38a;
+        color: #fff;
+        a {
+            color: #fff;
+        }
         &-title {
             padding-bottom: 5px;
             margin-bottom: 5px;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 2px solid #00a982;
             overflow: hidden;
             h1 {
                 width: 50%;
@@ -54,20 +60,19 @@
                 transition: all .2s ease-in;
             }
             a:hover {
-                color: #afaeae;
+                color: #e8e8e8;
             }
         }
     }
     &-body {
         padding: 0 50px;
         overflow: hidden;
-
     }
     &-footer {
         display: none;
         font-size: 12px;
         position: absolute;
-        bottom: 20px;
+        bottom: 0;
         right: 20px;
         a {
             color: #afaeae;
@@ -92,8 +97,6 @@
                 width: 160px;
                 display: inline-block;
             }
-            &-name {
-            }
             &-desc {
                 padding-left: 160px;
             }
@@ -106,7 +109,7 @@
         transition: all .2s ease-in;
     }
     .link:hover {
-        color: #afaeae;
+        color: #e8e8e8;
     }
 }
 
@@ -122,8 +125,142 @@
         margin: 0 auto;
         border-radius: 0;
         box-shadow: none;
+        &-head {
+            background: #fff;
+            color: #333;
+            a {
+                color: #333;
+            }
+            &-title {
+                border-bottom: 1px solid #ccc;
+            }
+        }
         &-footer {
             display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .resume-container {
+        width: 100%;
+        margin: 0;
+        font-size: 1rem;
+        a {
+            color: #fff;
+        }
+        &-head {
+            padding: 15px 25px 20px;
+            background: #00b38a;
+            color: #fff;
+            &-title {
+                h1 {
+                    width: 100%;
+                    display: block;
+                    font-size: 3rem;
+                    border-bottom: 1px solid #00a982;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+                .job {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    padding: 4px;
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+            &-info {
+                width: 100%;
+                display: block;
+                text-align: center;
+                font-size: 1rem;
+                line-height: 24px
+            }
+            &-contact {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 14px;
+                .url {
+                    display: none;
+                }
+                li:not(:first-child) {
+                    margin-left: 20px;
+                }
+            }
+        }
+        &-body {
+            padding: 15px 25px;
+        }
+        .title {
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+            font-size: 1.5rem;
+            border-radius: 22px;
+            padding: 0px;
+            font-weight: normal;
+            background: none;
+            position: relative;
+            background: #fff;
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 35%;
+                height: 1px;
+                background: #ccc;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 35%;
+                height: 1px;
+                background: #ccc;
+            }
+        }
+        .iconfont {
+            font-size: 1.5rem;
+        }
+        .info {
+            padding-top: 20px;
+            &-item {
+                font-size: 1rem;
+                line-height: 1.4rem;
+                margin-bottom: 8px;
+                font-weight: normal;
+                .iconfont {
+                    position: relative;
+                    top: 4px;
+                }
+                &-time {
+                    width: 100%;
+                    display: block;
+                    margin-bottom: 5px;
+                }
+                &-name {
+                    display: block;
+                    margin-bottom: 10px;
+                    a {
+                        color: #333;
+                    }
+                    .iconfont {
+                        padding-left: 5px;
+                        font-size: .8rem;
+                        top: 0;
+                    }
+                }
+                &-desc {
+                    padding-left: 0;
+                    margin-bottom: 2px;
+                }
+            }
         }
     }
 }

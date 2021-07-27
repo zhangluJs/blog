@@ -38,7 +38,8 @@ module.exports = {
         // 启动gzip压缩
         compress: false,
         // 热更新
-        hot: true
+        hot: true,
+        host: '0.0.0.0'
     },
     module: {
         rules: [
