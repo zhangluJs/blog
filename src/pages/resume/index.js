@@ -72,10 +72,10 @@ export default class Resume extends React.Component {
                             <span className="iconfont icon-dian"></span>对<strong>Node.js</strong>、<strong>CSS预处理器</strong>、<strong>数据可视化</strong>、<strong>性能优化</strong>、<strong>前端安全</strong>等也有一定的应用。
                         </li>
                         <li className="info-item">
-                            <span className="iconfont icon-dian"></span>熟练使用<strong>Git</strong>进行版本控制和代码管理、了解项目常规<strong>开发流程</strong>、<strong>开发调试技巧</strong>，了解简单的<strong>Linux</strong>命令。
+                            <span className="iconfont icon-dian"></span>熟练使用<strong>Git</strong>进行版本控制、代码管理，了解项目常规<strong>开发流程</strong>、<strong>开发调试技巧</strong>，了解简单的<strong>Linux</strong>命令。
                         </li>
                         <li className="info-item">
-                            <span className="iconfont icon-dian"></span>工作上<strong>积极执行</strong><strong>有责任心</strong>，具有良好的<strong>团队沟通合作</strong>能力以及<strong>学习能力</strong>。
+                            <span className="iconfont icon-dian"></span>工作上<strong>积极执行</strong><strong>有责任心</strong>，具有良好的<strong>团队沟通合作能力</strong>以及<strong>学习能力</strong>。
                         </li>
                     </ul>
                     <h3 className="title">
@@ -88,7 +88,7 @@ export default class Resume extends React.Component {
                             <p className="info-item-desc"><span className="iconfont icon-dian"></span>负责项目中接入技术的前期调研</p>
                             <p className="info-item-desc"><span className="iconfont icon-dian"></span>项目开发中的技术支持</p>
                             <p className="info-item-desc"><span className="iconfont icon-dian"></span>整站公共部分需求的开发、bug修复等</p>
-                            <p className="info-item-desc"><span className="iconfont icon-dian"></span>各方资源的协调。需求明确、接口数据格式定义、进度排期等</p>
+                            <p className="info-item-desc"><span className="iconfont icon-dian"></span>各方资源的协调。如需求明确、接口数据格式定义、进度排期等</p>
                         </li>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2017.08 ～ 2019.06</strong></span>
@@ -103,18 +103,25 @@ export default class Resume extends React.Component {
                     <ul className="info">
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.08 ～ 至今</strong></span>
-                            <span className="info-item-name"><strong>综合管理平台、短租管理平台</strong></span>
+                            <span className="info-item-name">
+                                <strong>
+                                    <a className="link" href="https://saas.izuche.com/#/Login" target="_blank">
+                                        综合管理平台、短租管理平台
+                                        <span className="iconfont icon-lianjie"></span>
+                                    </a>
+                                </strong>
+                            </span>
                             <p className="info-item-desc">
-                                技术栈：<strong>Vue-cli</strong>、<strong>Element-ui</strong>、<strong>Echarts</strong>等。
+                                技术栈：<strong>Vue-cli</strong>、<strong>Element-ui</strong>、<strong>Echarts</strong>等
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>负责系统迭代更新。维保，BI数据可视化、CRM、维保管理、车辆资产等模块的开发。
+                                <span className="iconfont icon-dian"></span>负责系统迭代更新。维保，BI数据可视化、CRM、维保管理、车辆资产等模块的开发
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>负责统中关于电子围栏的公共组件开发。通过调用高德地图api，完成圆形、多边形的电子围栏绘制，以及切换城市时地图及围栏中心点的初始化。
+                                <span className="iconfont icon-dian"></span>负责系统中关于电子围栏的公共组件开发。通过调用高德地图api，完成圆形、多边形的电子围栏绘制，以及切换城市时地图及围栏中心点的初始化
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>开发文件上传后回显list组件开发，暴露出删除文件、查看当前文件等回调函数。
+                                <span className="iconfont icon-dian"></span>开发文件上传后回显list组件，暴露出删除文件、查看当前文件等回调函数等
                             </p>
                             <p className="info-item-desc">
                                 <span className="iconfont icon-dian"></span>修复系统中公共部分bug，例如系统多页签用户登录信息显示错误等
@@ -122,28 +129,42 @@ export default class Resume extends React.Component {
                         </li>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.10 ～ 2019.12</strong></span>
-                            <span className="info-item-name"><strong>短租租车M站开发</strong></span>
+                            <span className="info-item-name">
+                                <strong>
+                                    <a className="link" href="https://m.izuche.com/" target="_blank">
+                                        短租租车M站开发
+                                        <span className="iconfont icon-lianjie"></span>
+                                    </a>
+                                </strong>
+                            </span>
                             <p className="info-item-desc">
-                                技术栈：<strong>React全家桶</strong>、<strong>Antd-mobile</strong>。
+                                技术栈：<strong>React全家桶</strong>、<strong>Antd-mobile</strong>
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>主要负责了项目中首页、城市选择页面开发。
+                                <span className="iconfont icon-dian"></span>主要负责了项目中首页、城市选择页面开发
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>调用高德api获取当前用户经纬度，请求接口推送距离最近的租车门店。
+                                <span className="iconfont icon-dian"></span>调用高德api获取当前用户经纬度，请求接口推送距离最近的租车门店
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>通过拆分组件、降低颗粒度减少逻辑的复杂度。将城市页面输入搜索、城市列表、右侧字母导航拆分成独立的组件。暴露方法、数据来完成组件间的通信
+                                <span className="iconfont icon-dian"></span>通过拆分组件、降低颗粒度减少逻辑的复杂度，将城市页面输入搜索、城市列表、右侧字母导航拆分成独立的组件。暴露方法、数据来完成组件间的通信
                             </p>
                         </li>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.08 ～ 至今</strong></span>
-                            <span className="info-item-name"><strong>H5活动页、APP端H5页面支持</strong></span>
+                            <span className="info-item-name">
+                                <strong>
+                                    <a className="link" href="https://h5.izuche.com/active/70anniversary.html" target="_blank">
+                                        H5活动页、APP端H5页面支持
+                                        <span className="iconfont icon-lianjie"></span>
+                                    </a>
+                                </strong>
+                            </span>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>负责H5相关活动页的开发。使用jQuery完成页面的基本交互，通过用户填写手机号完成活动优惠券的发送
+                                <span className="iconfont icon-dian"></span>负责H5相关活动页的开发。使用jQuery、animate.css完成活动页的基本交互
                             </p>
                             <p className="info-item-desc">
-                                <span className="iconfont icon-dian"></span>APP端webview协议相关页面的开发支持。判断user-agent分别调用安卓、ios暴露出的方法来完成相应的交互等
+                                <span className="iconfont icon-dian"></span>APP端webview用户协议等相关页面的开发支持。调用端上暴露出的方法完成相应的交互
                             </p>
                         </li>
                         <div style={{pageBreakAfter: 'always'}}></div>
@@ -165,9 +186,16 @@ export default class Resume extends React.Component {
                         </li>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2017.10 ～ 2017.11</strong></span>
-                            <span className="info-item-name"><strong>一站式登录页改版</strong></span>
+                            <span className="info-item-name">
+                                <strong>
+                                    <a className="link" href="https://www2.baidu.com/" target="_blank">
+                                        一站式登录页改版
+                                        <span className="iconfont icon-lianjie"></span>
+                                    </a>
+                                </strong>
+                            </span>
                             <p className="info-item-desc">
-                                项目背景：一站式登录页作为商业服务重要入口，展示信息缺失、内容陈旧、影响客户体验。因此期望通过对页面结构和内容的优化，提升客户体验，提高转化效率
+                                项目背景：一站式登录页作为商业服务重要入口，存在展示信息缺失、内容陈旧等问题影响客户体验。因此期望通过对页面结构和内容的优化，提升客户体验，提高转化效率
                             </p>
                             <p className="info-item-desc">
                                 技术栈：<strong>Vue-cli 2.x</strong>、<strong>element-ui</strong>

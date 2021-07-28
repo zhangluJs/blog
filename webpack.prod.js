@@ -66,7 +66,7 @@
          // 生成html文件
          new HtmlWebpackPlugin({
              filename: 'index.html',
-             template: 'index.html',
+             template: 'template/index.html',
              inject: 'body'
          }),
  
