@@ -6,6 +6,11 @@
 import React from 'react';
 import './index.scss';
 export default class Resume extends React.Component {
+
+    componentDidMount() {
+        document.title = '张璐-前端开发-4年';
+    }
+
     render() {
         return (
             <div className="resume-container">
@@ -248,5 +253,9 @@ export default class Resume extends React.Component {
                 </footer>
             </div>
         );
+    }
+
+    componentWillUnmount() {
+        document.title = 'blog';
     }
 }

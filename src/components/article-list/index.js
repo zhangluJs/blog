@@ -51,6 +51,11 @@ export default class ArticleList extends React.Component {
                 description: '最近仔细看了关于js执行相关的东西，像异步队列、微任务宏任务、event-loop后感觉对js的理解又稍微深了一些，所以学习一下实现一个promise',
                 date: '学习'
             }, {
+                name: '简单的算法笔记',
+                path: '/algorithm',
+                description: '算法这玩意一直不愿意正面面对，因为曾经看过一些算法题，感觉难于上青天，真的太难了。但是骨头再硬也得啃。慢慢学～',
+                date: '学习'
+            }, {
                 name: 'Vue',
                 path: '/vue',
                 description: 'Vue用的比较多一些，总结一些关于Vue的知识点特性等',

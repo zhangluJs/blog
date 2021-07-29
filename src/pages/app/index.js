@@ -49,6 +49,7 @@ import vue from '../../markdown/vue.md';
 import resume from '../resume/index';
 import vue3 from '../../markdown/vue3.md';
 import reactHooks from '../../markdown/react-hooks.md';
+import algorithm from '../../markdown/algorithm.md';
 
 import './index.scss';
 
@@ -100,6 +101,7 @@ export default class App extends React.Component {
                             <Route path='/resume' component={resume}></Route>
                             <Route path='/vue3' component={vue3}></Route>
                             <Route path='/react-hooks' component={reactHooks}></Route>
+                            <Route path='/algorithm' component={algorithm}></Route>
                             <Redirect from='/' to='/home'></Redirect>
                         </Switch>
                     </main>
