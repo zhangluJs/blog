@@ -122,6 +122,14 @@ new 出来的实例`xialuo`可以访问`sayHi`方法，但是它本身是没有�
 
 如果我们访问一个没有被定义过的方法，则依然会沿着`__proto__`向上查找，直到访问`Object.prototype.__proto__`为`null`，会返回一个`undefined`。结合下面的代码和图片。
 
+2021/07/30更新。 这两在看关于算法的东西。果然原型链就可以理解是链表这种数据结构。
+
+原型链的本质是链表
+
+原型链上的节点是各种原型对象。比如Function.prototype、Object.prototype...
+
+原型链通过__proto__属性链接各种原型对象
+
 ```js
 class People {
     constructor(name) {
@@ -148,6 +156,26 @@ console.log(xialuo.number) // 100
 console.log(xialuo.__proto__ === Student.prototype) // true
 ```
 ![原型链](./static/img/prototype.jpg)
+
+
+```js
+// 手写一个 instanceof
+// 这里用到了遍历链表的方式
+function instanceOf(a, b) {
+    let p = a;
+    while(a) {
+        if (a === b.prototype) {
+            return true;
+        }
+        // [].__proto__ === Array.prototype
+        // Array.prototype.__proto__ === Object.prototype 
+        // Object.prototype.__proto__ === null;
+        p = p.__proto__;
+    }
+    return false;
+}
+
+```
 
 **闭包**
 
