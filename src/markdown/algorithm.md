@@ -236,4 +236,57 @@ const has = set.has(3);
 // 求交集
 const set2 = new Set([2, 3]);
 const set3 = new Set([...set].filter(item => set2.has(item)));
+// 求差集
+const set3 = new Set([...set].filter(item => !set2.has(item)));
+```
+
+```js
+let mySet = new Set();
+// 添加一个属性
+mySet.add(1);
+// 注意这里，Set对象只会保留唯一值，所以add两次5只会保留一个
+mySet.add(5);
+mySet.add(5);
+mySet.add('some text');
+let o = {a: 1, b: 2};
+mySet.add(o);
+mySet.add({a: 1, b: 2});
+
+mySet.has(5) // true
+
+// 删除5
+mySet.delete(5)
+```
+```js
+// 遍历集合
+for (let key of mySet) {
+    console.log(key);
+}
+for (let key of mySet.keys()) {
+    console.log(key);
+}
+```
+
+# 字典
+
+与集合类似，字典也是一种存储唯一值的数据结构，但它是以键值对的形式来存储的
+
+ES6中有字段，名为Map
+
+```js
+const m = new Map();
+
+// 增
+m.set('a', 'aa');
+m.set('b', 'bb');
+
+// 查
+m.get('a');
+
+// 删
+m.delete('b');
+m.clear();
+
+// 改
+m.set('a', 'aaa');
 ```

@@ -246,30 +246,24 @@ console.log(c.get('a'));
 
 ```js
 // 实现一个call
-Function.prototype.myCall = function (obj) {
+Function.prototype.myCall = function (obj, ...args) {
     // 判断是否为一个对象
     obj = obj ？ Object(obj) : window;
-    let arr = [];
-    // 拿到除了第一项的所有参数。注意i 从 1开始。因为第0项是对象。
-    // 也可以使用es6的结构 arr = [...argument].slice(1);
-    for (let i = 1; i < arguments.length; i++) {
-        arr.push(arguments[i]);
-    }
     obj.fn = this;
-    let result = obj.fn(...arr);
+    let result = obj.fn(args);
     delete obj.fn;
     return result;
 }
 
 // 实现一个apply
-Function.prototype.myApply = function (obj, arr) {
+Function.prototype.myApply = function (obj, args) {
     obj = obj ? Object(obj) : window;
     obj.fn = this;
     let result;
-    if (arr) {
-        result = obj.fn();
+    if (args.length) {
+        result = obj.fn(...args);
     } else {
-        result = obj.fn(...arr);
+        result = obj.fn();
     }
     delete obj.fn;
     return result;
