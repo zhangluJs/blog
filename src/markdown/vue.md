@@ -449,6 +449,16 @@ let obj = {
 }
 
 observer(obj);
+
+const arrprototype = Array.property;
+const methods = ['pop', 'push'];
+const arr = Object.create(arrprototype);
+methods.forEach(item => {
+    arr[item] = function () {
+        arrprototype[item].apply(this, arguments);
+    }
+})
+
 ```
 
 * 虚拟DOM（Vitrual DOM）和 diff

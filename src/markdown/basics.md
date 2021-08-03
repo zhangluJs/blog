@@ -250,7 +250,7 @@ Function.prototype.myCall = function (obj, ...args) {
     // 判断是否为一个对象
     obj = obj ？ Object(obj) : window;
     obj.fn = this;
-    let result = obj.fn(args);
+    let result = obj.fn(...args);
     delete obj.fn;
     return result;
 }
@@ -260,7 +260,7 @@ Function.prototype.myApply = function (obj, args) {
     obj = obj ? Object(obj) : window;
     obj.fn = this;
     let result;
-    if (args.length) {
+    if (args) {
         result = obj.fn(...args);
     } else {
         result = obj.fn();
