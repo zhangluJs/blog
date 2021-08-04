@@ -290,3 +290,245 @@ m.clear();
 // 改
 m.set('a', 'aaa');
 ```
+
+# 树
+
+一种分层的数据的抽象模型
+
+前端工作中常见的树包括：DOM树、级联选择
+
+* 什么是深度优先遍历？
+
+    尽可能深的搜索树的分支
+
+    ![深度优先遍历](./static/img/tree.png)
+
+    深度优先算法口诀。1、访问跟节点 2、对跟节点的chuildren挨个进行深度优先遍历。
+
+```js
+/**
+ * 树的深度优先遍历
+ */
+const tree = {
+    val: 'a',
+    children: [{
+        val: 'b',
+        children: [{
+            val: 'd',
+            children: []
+        }, {
+            val: 'e',
+            children: []
+        }]
+    }, {
+        val: 'c',
+        children: [{
+            val: 'f',
+            children: []
+        }, {
+            val: 'g',
+            children: []
+        }]
+    }]
+};
+
+const dfs = root => {
+    console.log(root.val);
+    root.children.forEach(child => {
+        dfs(child);
+    });
+};
+
+dfs(tree);
+```
+
+* 什么是广度优先遍历？
+
+    先访问离跟节点最近的节点
+
+    ![广度优先遍历](./static/img/guang.png)
+
+    广度有优先算法口诀。1、新建一个队列，把根节点入队。2、把队头出队并访问。3、把队头的children挨个入队。4、重复第二、三步，直到队列为空。
+
+```js
+const tree = {
+    val: 'a',
+    children: [{
+        val: 'b',
+        children: [{
+            val: 'd',
+            children: []
+        }, {
+            val: 'e',
+            children: []
+        }]
+    }, {
+        val: 'c',
+        children: [{
+            val: 'f',
+            children: []
+        }, {
+            val: 'g',
+            children: []
+        }]
+    }]
+};
+
+const bfs = (root) => {
+    let queue = [];
+    queue.push(root);
+    while(queue.length > 0) {
+        const n = queue.shift();
+        console.log(n);
+        n.children.forEach(item => {
+            queue.push(item);
+        });
+    }
+}
+
+bfs(tree);
+```
+
+### 二叉树是什么？
+
+    树中每个节点最多只能有两个子节点
+
+    在js中通常用Object来模拟二叉树
+
+```js
+// 介个就是神奇的二叉树
+const bt = {
+    val: 1,
+    left: {
+        val: 2,
+        left: {
+            val: 4,
+            left: null,
+            right: null
+        },
+        right: {
+            val: 5,
+            left: null,
+            right: null
+        }
+    },
+    right: {
+        val: 3,
+        left: {
+            val: 6,
+            left: null,
+            right: null
+        },
+        right: {
+            val: 7,
+            left: null,
+            right: null
+        }
+    }
+}
+```
+
+
+
+* 二叉树的先序遍历
+
+1、访问根节点
+
+2、对根节点的左子树进行先序遍历
+
+3、对根节点的右子树进行先序遍历
+
+```js
+//  递归版
+const preorder = (root) => {
+    if (!root) {
+        return false;
+    }
+    console.log(root.val);
+    preorder(root.left);
+    preorder(root.right);
+}
+
+// 非递归版
+const preorder = (root) => {
+    if (!root) {return false};
+    const stack = [root];
+    while(stack.length) {
+        let n = stack.pop();
+        console.log(n.val);
+        if (n.right) {stack.push(n.right)};
+        if (n.left) {stack.push(n.left)};
+    }
+}
+```
+
+* 二叉树的中序遍历
+
+1、对根节点的左子树进行中序遍历
+
+2、访问根节点
+
+3、对根节点的右子树进行中序遍历
+
+```js
+// 递归版
+const inorder = (root) => {
+    if (!root) {
+        return false;
+    }
+    inorder(root.left);
+    console.log(root.val);
+    inorder(root.right);
+}
+// 非递归版
+const inorder = (root) => {
+    if (!root) {return false};
+    const stack = [];
+    let p = root;
+    while(stack.length || p) {
+        while(p) {
+            stack.push(p);
+            p = p.left;
+        }
+        const n = stack.pop();
+        console.log(n.val);
+        p = n.right;
+    }
+}
+```
+
+* 二叉树的后序遍历
+
+1、对根节点的左子树进行后序遍历
+
+2、对根节点的右子树进行后序遍历
+
+3、访问根节点
+
+```js
+// 递归版
+const postorder = (root) => {
+    if (!root) {
+        return false;
+    }
+    postorder(root.left);
+    postorder(root.right);
+    console.log(root.val);
+}
+// 非递归版
+const postorder = (root) => {
+    if (!root) {return false};
+    const stack = [root];
+    const reverse = [];
+    while(stack.length) {
+        let n = stack.pop();
+        reverse.push(n);
+        if (n.left) {stack.push(n.left)};
+        if (n.right) {stack.push(n.right)};
+    }
+    while(reverse.length) {
+        let n = reverse.pop();
+        console.log(n.val);
+    }
+}
+```
