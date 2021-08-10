@@ -200,10 +200,10 @@ function print(fn) {
 
 let b = 100;
 function fn1() {
-    console.log(a)
+    console.log(b)
 }
 
-print(fn);
+print(fn1);
 ```
 
 实际开发中闭包的作用： 常用于隐藏数据。下面是一个cache示例
@@ -352,11 +352,11 @@ JS是单线程的
 
 **promise**
 
- 三种状态 pending(在过程中) resolved|fulfilled(解决) rejected(失败)
+三种状态 pending(在过程中) resolved|fulfilled(解决) rejected(失败)
 
- pending -> resolved|fulfilled 或 pending -> rejected。 变化不可逆
+pending -> resolved|fulfilled 或 pending -> rejected。 变化不可逆
  
- **new Promise传入的函数在js的主线程上，所以是同步的进行的。而.then.catch则进入了异步回调队列**
+**new Promise传入的函数在js的主线程上，所以是同步的进行的。而.then.catch则进入了异步回调队列**
 
 - 状态的表现和变化
  1. pending 状态，不会触发then和catch
@@ -409,7 +409,7 @@ async function async2() {
 console.log('script start') // 1
 async1(); // 遇到函数立刻执行，现在还没进入到异步里去
 console.log('script end') // 4
- ```
+```
 
 **for ... of**
 
