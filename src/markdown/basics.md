@@ -1410,3 +1410,45 @@ console.log(obj1.b.x); // 100
     setTimeout要手动控制频率，而RAF浏览器会自动控制
 
     后台标签或页面隐藏，RAF会暂停，而setTimeout依然执行
+
+
+
+
+
+
+1. etag: W/"61090776-3c9"
+2. etag: "61090776-3c9"
+
+
+303 
+307
+http1.1 2.0新特性
+
+
+// {
+//     "北京"： {
+//         "海淀"： {
+//             上地：101
+//         }
+//     },
+//     “shanghai”: {
+//         "huangpu": 503
+//     }
+// }
+
+// [
+//     {
+//         name: 'beijing,
+//         children: [{
+            name: 'asd'
+//         }, {
+    
+            }]
+//     },
+//     {
+//         name: 'shanghai',
+//         children: [{},{}]
+//     }
+// ]
+
+LRUCache.prototype.get = function(key) {
