@@ -1452,3 +1452,10 @@ http1.1 2.0新特性
 // ]
 
 LRUCache.prototype.get = function(key) {
+
+
+
+词法作用域
+
+条件断点
+
