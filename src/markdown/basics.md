@@ -848,7 +848,7 @@ ajax('GET', 'xxxxx.json').then(res => {
 
 **其他的AJAX请求Api**
 
-fetch是新出的请求相关的api，但是浏览器的支持还需要考虑一下。不是很统一
+fetch是新出的请求相关的api，但是浏览器的支持还需要考虑一下。fetch默认返回一个promise对象，通过then catch来进行请求后的处理。需要注意的是，fetch请求仅在网络故障时才会被标记为reject，即便响应状态码是404、500。fetch请求不会发送cookie。
 
 ```js
 fetch('xxxxx.json').(res => {
@@ -1424,7 +1424,7 @@ console.log(obj1.b.x); // 100
 307
 http1.1 2.0新特性
 
-
+```js
 // {
 //     "北京"： {
 //         "海淀"： {
@@ -1440,10 +1440,10 @@ http1.1 2.0新特性
 //     {
 //         name: 'beijing,
 //         children: [{
-            name: 'asd'
+            // name: 'asd'
 //         }, {
     
-            }]
+            // }]
 //     },
 //     {
 //         name: 'shanghai',
@@ -1451,7 +1451,11 @@ http1.1 2.0新特性
 //     }
 // ]
 
-LRUCache.prototype.get = function(key) {
+// LRUCache.prototype.get = function(key) {
+```
+
+
+
 
 
 
