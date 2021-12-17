@@ -154,12 +154,13 @@ export default class Resume extends React.Component {
                             <p className="info-item-desc">
                                 <span className="iconfont icon-dian"></span>
                                 负责车机管理中电子围栏公共组件的开发。通过调用高德地图api，完成多边形的电子围栏绘制、围栏回显等功能。并提供暴露围栏坐标点的回调函数等。
-                                并在车辆监控、安全管理模块中使用。
+                                在车辆监控、安全管理模块中使用。
                             </p>
                             <p className="info-item-desc">
                                 <span className="iconfont icon-dian"></span>负责CRM-BI需求的开发，其中包括客户管理图表数据分析、销售线索数据分析等模块。和组内成员一个月时间从设计、开发、测试并提前上线，当月绩效考核+20分。
                             </p>
                         </li>
+                        <div style={{pageBreakAfter: 'always'}}></div>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.10 ～ 2019.12</strong></span>
                             <span className="info-item-name">
@@ -172,8 +173,8 @@ export default class Resume extends React.Component {
                             </span>
                             <p className="info-item-desc">
                                 <strong>项目介绍：</strong>
-                                拓展租车渠道以m站方式接入，方便快速。后续可通过链接嵌入方式接入到各大应用。
-                                目前已对接高德地图、携程、首汽约车等。用户可在其应用下单，同在“首汽租车APP”下单。
+                                拓展租车渠道以m站方式接入，方便快捷。后续可通过链接嵌入方式接入到各大应用。
+                                目前已对接高德地图、携程、首汽约车等app。用户可在其应用下单，同在“首汽租车APP”下单。
                             </p>
                             <p className="info-item-desc"><strong>技术栈：</strong></p>
                             <p className="info-item-desc">
@@ -270,7 +271,7 @@ export default class Resume extends React.Component {
                             </span>
                             <p className="info-item-desc">
                                 <strong>介绍：</strong>
-                                最开始做这个主页是为了熟悉react及webpack配置相关的内容。之后又接触到markdown。所以就修改配置，开始用md的形式记录工作中遇到的一些小问题，以及学习时的笔记。线上的形式也比较方便查阅、保存。
+                                最开始做这个主页是为了熟悉react及webpack配置相关的内容，之后又接触到markdown。所以就修改配置，开始用md的形式记录工作中遇到的一些问题，以及学习时的笔记。使用gitpage的形式部署到线上，方便查阅。
                             </p>
                             <p className="info-item-desc">
                                 <strong>技术栈：</strong>
