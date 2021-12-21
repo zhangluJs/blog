@@ -638,9 +638,9 @@ flex-wrap 决定元素是否换行 默认值no-wrap。wrap 换行。wrap-reverse
 
 justify-content 决定元素之间是否留白 默认值flex-start。flex-end子元素位于结尾。space-between 子元素之间留白。space-around 各行之前、之后、之间都留白
 
-align-items 决定子元素的垂直对齐方式 默认值stretch。center垂直剧中。 flex-start 垂直顶部。flex-end 垂直底部
+align-items 决定子元素的垂直对齐方式 默认值stretch。center垂直居中。 flex-start 垂直顶部。flex-end 垂直底部
 
-align-self 子元素的属性。单独设置子元素的垂直对齐方式。默认值stretch。center垂直剧中。flex-start 顶部。flex-end 底部
+align-self 子元素的属性。单独设置子元素的垂直对齐方式。默认值stretch。center垂直居中。flex-start 顶部。flex-end 底部
 
 - rem
 

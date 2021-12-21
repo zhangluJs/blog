@@ -211,9 +211,9 @@ export default {
         event: 'change1'
     },
     props: {
-        text1: {
-            default: '',
-            type: String
+        text1: Sting,
+        default() {
+            return '';
         }
     }
 }
@@ -525,7 +525,7 @@ let vdom = {
 
 2. 判断old与new，这两个vnode是否相等。如果相等则停止执行。
 
-4. 判断vnode.text是否为空，如果text有值，则说明children为空。并且两个old.text !== vnode.text。则用text去更新，并且移除oldnode.children，
+4. 判断vnode.text是否为空，如果text有值，则说明children为空。并且两个old.text !== vnode.text。则用text去更新，并且移除oldnode.children
 
 5. 如果vnode.text为空。则新旧vnode对比是否有children，如果两者都有children，并且不相等，则updatechildren
 
