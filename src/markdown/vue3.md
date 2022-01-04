@@ -604,7 +604,7 @@ setup() {
     可监听数组变化
 
 #### 编译优化部分
-    
+
 * patchFlag
 
 > patchFlag给每个节点打上标记，用于区分不同类类型的节点。比如静态、动态节点，动态节点又有哪些类型（prop、class、text...）。可以简单理解为如果当前节点是个静态节点（值或属性没有引用任何变量），就不去做比较如下图。通过改变传入的vnode，达到了优化diff算法的目的。
@@ -676,3 +676,10 @@ document.getElementById('btn1').addEventListener('click', async () => {
 
 ### Composition API 与 React Hooks对比
 
+1. setup只会被调用一次，而后者函数会被调用多次。
+
+2. setup无需使用useMemo、useCallback，因为setup只调用一次。
+
+3. setup无需顾虑调用顺序，hooks需要保证顺序一致，比如hooks不能放在循环里等等。
+
+4. setup reactive + ref比useState要难理解。

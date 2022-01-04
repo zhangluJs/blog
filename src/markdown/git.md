@@ -17,6 +17,7 @@
 - `git checkout .`：放弃本次的修改
 - `git clean -dfx`：放弃本次新增的文件或文件夹
 - `git commit -m '这次修改了git文件'`：将已经提交到暂存区的修改提交到本地
+- `git commit --amend`： 修改描述写错的commit
 - `git push`：将本地的修改推到远端代码库
 - `git pull`：将远端代码库中其他人新增的修改拉取到本地
 - `git branch `：列出分支
@@ -31,6 +32,7 @@
 - `git reset --hard [版本号。log出来的那个hash]`： 回滚到指定的版本，放弃这个版本之后的修改。需要使用`git push -f`强制推到远端。之所以要强制推送，是因为我们本地的HEAD比远端的要旧。[这位博主介绍的很详细](https://blog.csdn.net/yxlshk/article/details/79944535)
 - `git reset --soft [hash]`：也是一种回滚方式 
 - `git reset --soft HEAD^`：不小心commit后，想撤回commit
+- `git reset --hard HEAD^`：回滚最后一次commit
 - `git diff`：查看代码的修改部分
 - `git diff --cached`：查看已经add 但没有commit的改动
 - `git tag -a v2019 -m 'my version 1.4'`：-a 后跟版本号 -m 后跟此次提交的描述。我个人理解这次就相当于commit
