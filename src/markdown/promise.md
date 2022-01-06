@@ -1,5 +1,7 @@
 # Promise
 
+promise简单实现
+
 1. new Promise接收一个参数，该参数是一个函数，这个函数又接收两个回调函数，并且这两个回调函数可以修改promise的状态，切传入值为promise的result
 
 2. promise 三个状态 等待 pending 完成fulfileed 失败rejected，状态在 resolve reject时修改，并且不可逆

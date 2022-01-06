@@ -85,6 +85,16 @@ this.setState({
 });
 cosnole.log(this.state.count); // 0
 
+
+
+// 同步输出
+setTimeout(() => {
+    this.setState({
+        count: this.state.count + 1
+    });
+    cosnole.log(this.state.count); // 1
+})
+
 bodyClickHandler = () => {
     // 同步输出
     this.setState({
@@ -93,6 +103,7 @@ bodyClickHandler = () => {
     cosnole.log(this.state.count); // 1
 }
 componentDidMount() {
+    // 自己定义的DOM事件，setState是同步的
     document.body.addEventListener('click', this.bodyClickHandler);
 }
 ```
@@ -101,7 +112,7 @@ componentDidMount() {
 
     为什么会被合并？
 
-    因为setState是异步，而异步处理时以下面的例子为例，这是count还是0，所以它们都是0+1，所以都是1。
+    因为setState是异步，而异步处理时以下面的例子为例，这时count还是0，所以它们都是0+1，所以都是1。
 
     传入对象，会被合并。
 
