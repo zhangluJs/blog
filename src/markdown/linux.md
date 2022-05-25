@@ -43,6 +43,8 @@
 
 `curl`: http命令行工具，它支持文件的上传和下载。（我这里使用  拉取了一段音悦台的资源，使用node生成了一个json文件）
 
+`curl -v xxxx`: 查看http报文
+
 `mv`: 修改文件名或者移动文件
 
 - 修改文件名 mv index.html index1.html

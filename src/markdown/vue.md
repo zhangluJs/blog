@@ -450,7 +450,7 @@ let obj = {
 
 observer(obj);
 
-const arrprototype = Array.property;
+const arrprototype = Array.prototype;
 const methods = ['pop', 'push'];
 const arr = Object.create(arrprototype);
 methods.forEach(item => {

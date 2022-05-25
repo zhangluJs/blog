@@ -846,6 +846,9 @@ ajax('GET', 'xxxxx.json').then(res => {
 
 还有其他的如 document.domain、window.name等
 
+可能会触发options请求的几种情况：使用了put、delete、connect、options、patch方法。人为设置了非规定内的其他首部字段，参考前面几种简单请求的安全字段合集，还要特别注意Content-type类型。XMLHttpRequestUpload 对象注册了任何事件监听器。请求中使用了ReadableStream对象
+
+
 **其他的AJAX请求Api**
 
 fetch是新出的请求相关的api，但是浏览器的支持还需要考虑一下。fetch默认返回一个promise对象，通过then catch来进行请求后的处理。需要注意的是，fetch请求仅在网络故障时才会被标记为reject，即便响应状态码是404、500。fetch请求不会发送cookie。

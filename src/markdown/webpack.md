@@ -252,7 +252,7 @@ setTimeout(() => {
 
 ```
 
-2. IgnorePlugin 可用于生产环境
+2. IgnorePlugin 可用于生产环境
 
     避免引入无用模块
 
