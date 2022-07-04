@@ -8,7 +8,7 @@ import './index.scss';
 export default class Resume extends React.Component {
 
     componentDidMount() {
-        document.title = '张璐-前端开发-4年';
+        document.title = '张璐-前端开发-5年';
     }
 
     render() {
@@ -23,8 +23,8 @@ export default class Resume extends React.Component {
                     </section>
                     <ul className="resume-container-head-info">
                         <li>男 / 1993.12</li>
-                        <li>本科 / 4年工作经验</li>
-                        <li>山西管理职业学院</li>
+                        <li>本科 / 5年工作经验</li>
+                        <li>华中师范大学</li>
                     </ul>
                     <ul className="resume-container-head-contact">
                         <li>
@@ -125,7 +125,7 @@ export default class Resume extends React.Component {
                             <span className="info-item-time"><strong>2019.08 ～ 至今</strong></span>
                             <span className="info-item-name">
                                 <strong>
-                                    <a className="link" href="https://saas.izuche.com/#/Login" target="_blank">
+                                    <a className="link" target="_blank">
                                         综合管理平台
                                         <span className="iconfont icon-lianjie"></span>
                                     </a>
@@ -165,7 +165,7 @@ export default class Resume extends React.Component {
                             <span className="info-item-time"><strong>2019.10 ～ 2019.12</strong></span>
                             <span className="info-item-name">
                                 <strong>
-                                    <a className="link" href="https://m.izuche.com/" target="_blank">
+                                    <a className="link" target="_blank">
                                         移动端-租车M站
                                         <span className="iconfont icon-lianjie"></span>
                                     </a>
@@ -313,3 +313,4 @@ export default class Resume extends React.Component {
         document.title = 'blog';
     }
 }
+ 
