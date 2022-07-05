@@ -123,14 +123,7 @@ export default class Resume extends React.Component {
                     <ul className="info">
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.08 ～ 至今</strong></span>
-                            <span className="info-item-name">
-                                <strong>
-                                    <a className="link" target="_blank">
-                                        综合管理平台
-                                        <span className="iconfont icon-lianjie"></span>
-                                    </a>
-                                </strong>
-                            </span>
+                            <span className="info-item-name"><strong>综合管理平台</strong></span>
                             <p className="info-item-desc">
                                 <strong>项目介绍：</strong>综合管理平台是内部toB后台管理系统。主要支持公司内部日常业务运行，功能包括车辆资产管理、客户数据分析、人员权限划分、OA审批等。
                             </p>
@@ -163,14 +156,7 @@ export default class Resume extends React.Component {
                         <div style={{pageBreakAfter: 'always'}}></div>
                         <li className="info-item">
                             <span className="info-item-time"><strong>2019.10 ～ 2019.12</strong></span>
-                            <span className="info-item-name">
-                                <strong>
-                                    <a className="link" target="_blank">
-                                        移动端-租车M站
-                                        <span className="iconfont icon-lianjie"></span>
-                                    </a>
-                                </strong>
-                            </span>
+                            <span className="info-item-name"><strong>移动端-租车M站</strong></span>
                             <p className="info-item-desc">
                                 <strong>项目介绍：</strong>
                                 拓展租车渠道以m站方式接入，方便快捷。后续可通过链接嵌入方式接入到各大应用。
